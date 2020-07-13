@@ -1,5 +1,5 @@
 {
-  "name": "furious/psr15",
+  "name": "furious/http-runner",
   "description": "PHP 7.4 HTTP Runner",
   "license": "MIT",
   "keywords": ["http", "runner", "php", "php 7.4"],
