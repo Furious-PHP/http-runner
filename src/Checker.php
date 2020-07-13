@@ -12,7 +12,7 @@ final class Checker
     public function checkHeadersAlreadySent(bool $alreadySent = null): void
     {
         if (null === $alreadySent) {
-            $headersSent = headers_sent();
+            $alreadySent = headers_sent();
         }
 
         if ($alreadySent) {
