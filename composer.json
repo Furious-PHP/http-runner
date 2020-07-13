@@ -29,6 +29,6 @@
     }
   },
   "scripts": {
-    "test": "phpunit --colors=always"
+    "test": "phpunit --stderr --colors=always"
   }
 }
