@@ -3,6 +3,13 @@
     <testsuites>
         <testsuite name="Unit">
             <directory>tests/</directory>
+            <file>Checker/HeadersNotSentTest</file>
+            <file>Checker/HeadersSentTest</file>
+        </testsuite>
+        <testsuite name="Unit Checker">
+            <directory>tests/Checker</directory>
+            <file>HeadersNotSentTest</file>
+            <file>HeadersSentTest</file>
         </testsuite>
     </testsuites>
 

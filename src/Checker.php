@@ -9,24 +9,16 @@ use Furious\HttpRunner\Exception\OutputAlreadyWroteException;
 
 final class Checker
 {
-    public function checkHeadersAlreadySent(bool $alreadySent = null): void
+    public function checkHeadersAlreadySent(): void
     {
-        if (null === $alreadySent) {
-            $alreadySent = headers_sent();
-        }
-
-        if ($alreadySent) {
+        if (headers_sent()) {
             throw new HeadersAlreadySentException();
         }
     }
 
-    public function checkOutputAlreadyWrote(bool $alreadyWrote = null): void
+    public function checkOutputAlreadyWrote(): void
     {
-        if (null === $alreadyWrote) {
-            $wrote = ob_get_level() > 0 and ob_get_length() > 0;
-        }
-
-        if ($alreadyWrote) {
+        if (ob_get_level() > 0 and ob_get_length() > 0) {
             throw new OutputAlreadyWroteException();
         }
     }
