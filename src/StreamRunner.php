@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Furious\HttpRunner;
 
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamInterface;
 use function flush;
 
 final class StreamRunner implements RunnerInterface
@@ -78,20 +79,25 @@ final class StreamRunner implements RunnerInterface
 
         $remaining = $length;
 
-        while ($remaining >= $this->maxBufferLength && !$body->eof()) {
+        $this->emitBodyRemaining($body, $remaining);
+    }
+
+    private function emitBodyRemaining(StreamInterface $body, int $remaining): void
+    {
+        while ($remaining >= $this->maxBufferLength and !$body->eof()) {
             $contents = $body->read($this->maxBufferLength);
             $remaining -= strlen($contents);
             echo $contents;
         }
 
-        if ($remaining > 0 && ! $body->eof()) {
+        if ($remaining > 0 and !$body->eof()) {
             echo $body->read($remaining);
         }
     }
 
     private function parseContentRange(string $header) : ?array
     {
-        if (! preg_match('/(?P<unit>[\w]+)\s+(?P<first>\d+)-(?P<last>\d+)\/(?P<length>\d+|\*)/', $header, $matches)) {
+        if (!preg_match('/(?P<unit>[\w]+)\s+(?P<first>\d+)-(?P<last>\d+)\/(?P<length>\d+|\*)/', $header, $matches)) {
             return null;
         }
 
