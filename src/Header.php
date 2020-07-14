@@ -13,10 +13,10 @@ final class Header
 
     public function send(string $name, string $value, int $code = null, bool $replace = true): void
     {
-        if ($code) {
-            header($name . ': ' . $value, $replace, $code);
-        } else {
+        if (null === $code) {
             header($name . ': ' . $value, $replace);
+        } else {
+            header($name . ': ' . $value, $replace, $code);
         }
     }
 }
