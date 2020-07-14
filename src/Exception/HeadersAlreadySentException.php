@@ -7,7 +7,7 @@ namespace Furious\HttpRunner\Exception;
 use RuntimeException;
 use Throwable;
 
-final class HeadersAlreadySentException extends RuntimeException
+class HeadersAlreadySentException extends RuntimeException
 {
     public function __construct($message = "", $code = 0, Throwable $previous = null)
     {

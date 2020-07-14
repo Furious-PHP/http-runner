@@ -7,7 +7,7 @@ namespace Furious\HttpRunner\Exception;
 use RuntimeException;
 use Throwable;
 
-final class OutputAlreadyWroteException extends RuntimeException
+class OutputAlreadyWroteException extends RuntimeException
 {
     public function __construct($message = "", $code = 0, Throwable $previous = null)
     {
