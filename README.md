@@ -11,6 +11,15 @@ HTTP Runner for PHP 7.4+
 [![Monthly Downloads](https://poser.pugx.org/furious/psr15/d/monthly.png)](https://packagist.org/packages/furious/psr15)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-Part of micro framework "furious" (soon)
+Install:
 
-composer require furious/http-runner
+    composer require furious/http-runner
+    
+Use:
+
+    use Furious\HttpRunner\Runner;
+
+    /** @var \Psr\Http\Message\ResponseInterface $response */
+    
+    $runner = new Runner();
+    $runner->run($response);
